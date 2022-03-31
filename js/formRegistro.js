@@ -69,37 +69,30 @@ const registrarUsuario = () => {
 				//Limpia la tabla usuarios en el DOM
 				limpiarTabla()
 
-				//agrega un nuevo usuario al array usuarios
+				//Agrega un nuevo usuario al array usuarios
 				usuarios.push(nuevoUsuario)
-
 
 				//Carga los datos del array usuarios en el DOM
 				cargarUsuarios()
 
 				//Mostrar mensaje success
-				document.getElementById('message').innerHTML += 
-				`
-					<div class="alert alert-success" role="alert">
-							Usuario registrado correctamente.
-					</div>
-				`
+				success()
+
+				//Eliminar alerta del DOM
 				eliminarAlerta()
 
 			} else {
 				//Mostrar mensaje fail
-				document.getElementById('message').innerHTML +=
-					`
-					<div class="alert alert-danger" role="alert" id="alert">
-							El usuario ingresado ya se encuentra registrado.
-					</div>
-				`
+				fail()
+
+				//Eliminar alerta del DOM
 				eliminarAlerta()
 			}
 		} else {
-			warning('La identificación debe ser un número.')
+			warning('La identificación del usuario debe ser un número.')
 		}
 	} else {
-		warning('Los campos son obligatorios.')
+		warning('Todos los campos del formulario son obligatorios.')
 	}
 }
 
@@ -115,6 +108,24 @@ const eliminarAlerta = () => {
 	setTimeout(() => {
 		alertNode.removeChild(alert);
 	}, 4000);
+}
+
+const success = () => {
+	document.getElementById('message').innerHTML +=
+		`
+			<div class="alert alert-success" role="alert">
+				Usuario registrado correctamente.
+			</div>
+		`
+}
+
+const fail = () => {
+	document.getElementById('message').innerHTML +=
+		`
+			<div class="alert alert-dangerrole="alert" id="alert">
+					El número de identificación ingresado ya se encuentra registrado.
+			</div>
+		`
 }
 
 const warning = (mensaje) => {
