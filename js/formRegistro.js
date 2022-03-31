@@ -83,15 +83,17 @@ const registrarUsuario = () => {
 							Usuario registrado correctamente.
 					</div>
 				`
+				eliminarAlerta()
 
 			} else {
 				//Mostrar mensaje fail
 				document.getElementById('message').innerHTML +=
 					`
-					<div class="alert alert-danger" role="alert">
+					<div class="alert alert-danger" role="alert" id="alert">
 							El usuario ingresado ya se encuentra registrado.
 					</div>
 				`
+				eliminarAlerta()
 			}
 		} else {
 			alert('La identificación debe ser un número.')
@@ -105,5 +107,14 @@ document.addEventListener("keyup", (event) => {
 	event.preventDefault()
 	event.key === "Enter" && registrarUsuario()
 });
+
+const eliminarAlerta = () => {
+	let alertNode = document.querySelector('#message')
+	let alert = document.querySelector('.alert')
+
+	setTimeout(() => {
+		alertNode.removeChild(alert);
+	}, 4000);
+}
 
 
