@@ -96,10 +96,10 @@ const registrarUsuario = () => {
 				eliminarAlerta()
 			}
 		} else {
-			alert('La identificación debe ser un número.')
+			warning('La identificación debe ser un número.')
 		}
 	} else {
-		alert('Todos los campos son obligatorios.')
+		warning('Los campos son obligatorios.')
 	}
 }
 
@@ -115,6 +115,25 @@ const eliminarAlerta = () => {
 	setTimeout(() => {
 		alertNode.removeChild(alert);
 	}, 4000);
+}
+
+const warning = (mensaje) => {
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
+	})
+
+	Toast.fire({
+		icon: 'warning',
+		title: mensaje
+	})
 }
 
 
