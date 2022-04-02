@@ -122,7 +122,7 @@ const success = () => {
 const fail = () => {
 	document.getElementById('message').innerHTML +=
 		`
-			<div class="alert alert-dangerrole="alert" id="alert">
+			<div class="alert alert-danger role="alert" id="alert">
 					El número de identificación ingresado ya se encuentra registrado.
 			</div>
 		`
